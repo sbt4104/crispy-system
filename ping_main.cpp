@@ -115,7 +115,7 @@ void ping_it(struct in_addr *dst, float ttl_val, bool flag_ttl = false)
             packet_loss = 0;
             for(int test=sizeof(icmp_hdr);test<sizeof(icmp_hdr) + 
                 strlen(message);test++){
-                    if(buff[test]!=message[test-8]){
+                    if(buff[test]!=message[test-sizeof(icmp_hdr)]){
                         packet_loss++;
                     }
             }
