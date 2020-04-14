@@ -27,7 +27,9 @@ float failed =0;
 
 void handler(int code){
 
-    cout<<"\npackets transmitted: "<<sequence<<", packets received: "<<sequence - failed<<" loss percentage : "<< failed/sequence*100<<"%, total_time: "<<total_time<<" milliseconds\n";
+    cout<<"\npackets transmitted: "<<sequence<<", packets received: "<<sequence - failed
+        <<" loss percentage : "<< failed/sequence*100<<"%, total_time: "<<total_time
+        <<" milliseconds\n";
     exit(code);
 }
 
