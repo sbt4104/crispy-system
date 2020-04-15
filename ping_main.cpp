@@ -107,7 +107,7 @@ void ping_it(struct in_addr *dst, float ttl_val, bool flag_ttl = false)
         memcpy(&rcv_hdr, buff, sizeof rcv_hdr);
         if (rcv_hdr.type == ICMP_ECHOREPLY) {
             /* 
-            calculating accuracy
+            calculating loss of information
             The echo reply is an ICMP message generated in response to 
             an echo request; it is mandatory for all hosts, and must 
             include the exact payload received in the request.
@@ -122,14 +122,13 @@ void ping_it(struct in_addr *dst, float ttl_val, bool flag_ttl = false)
 
             loss_percentage = (packet_loss/strlen(message))*100;
 
-            cout<<endl;
             printf("ICMP Reply, id=0x%x, sequence =  0x%x\n",
                             icmp_hdr.un.echo.id, icmp_hdr.un.echo.sequence);
         } else {
             printf("Got ICMP packet with type 0x%x ?!?\n", rcv_hdr.type);
         }
     
-        printf("message_size: %d packet_loss: %f% RTT: %d miliseconds",strlen(message),
+        printf("message_size: %d packet_loss: %f% RTT: %d miliseconds\n",strlen(message),
             loss_percentage, duration.count());    
     }
 
@@ -148,7 +147,7 @@ int main(int argc, char *argv[])
         {
             std::cout << "Helpful stuff here\n";
         }
-        if(arg == "-t")
+        if(arg == "--t")
         {
             if(i+1<cmdLineArgs.size()){
                 ttl_val = stof(cmdLineArgs[i+1]);
