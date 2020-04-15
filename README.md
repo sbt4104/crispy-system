@@ -12,9 +12,9 @@
       
   - run instructions with tag
   
-      - ./ping_cli  < ip > `-t` 0.5
+      - ./ping_cli  < ip > `--t` 0.5
       
       example
       
-        ./ping_cli 172.217.9.238 -t 0.51
+        ./ping_cli 172.217.9.238 --t 0.51
        
